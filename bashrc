@@ -20,3 +20,15 @@ fi
 if [ -f .uber_local ]; then
     . .uber_local
 fi
+
+if [ -f .git_completion ]; then
+	. .git_completion
+fi
+
+if [ -f .virtualenv ]; then
+	. .virtualenv
+fi
+
+if [ -f .mysql_config ]; then
+	. .mysql_config
+fi
