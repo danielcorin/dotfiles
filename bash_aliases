@@ -6,6 +6,7 @@ alias c="clear"
 alias h="history"
 alias t="touch"
 alias epoch="date +%s"
+alias now="date -r"
 
 alias bye='kill -9 $$'
 
@@ -23,7 +24,7 @@ alias showhidden='defaults write com.apple.finder AppleShowAllFiles True; killal
 
 # functions
 
-function s() {
+function s () {
     if [ $# -eq 0 ]; then
         subl .
     else
@@ -32,15 +33,15 @@ function s() {
 }
 
 
-function mcd() {
+function mcd () {
   mkdir -p "$1" && cd "$1";
 }
 
-function cdl() {
-	cd $1; ls;
+function cdl () {
+    cd $1; ls;
 }
 
-cdf () {
+function cdf () {
     currFolderPath=$( /usr/bin/osascript <<"    EOT"
         tell application "Finder"
             try
@@ -56,20 +57,13 @@ cdf () {
     cd "$currFolderPath"
 }
 
-lh() {
+function lh () {
     open http://localhost:"$1"
 }
 
 # alias related
-alias eal="subl ~/.dotfiles/.bash_aliases"
-function sal() {
-	. ~/.bashrc
-	echo "Sourced ~/.dotfiles/.bashrc"
-}
-function reload() {
-	. ~/.dotfiles/.bash_profile
-	echo "Sourced ~/.dotfiles/.bash_profile"
-}
+alias eal="subl ~/.bash_aliases"
+alias sal=". ~/.bashrc; echo 'Sourced ~/.bashrc'"
 
 # system
 alias cal='cal | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"'
@@ -86,7 +80,7 @@ function p() {
     fi
 }
 
-search_up () {
+function search_up () {
     proj_root=$(pwd -P 2>/dev/null || command pwd)
     while [ ! -e "$proj_root/$1" ]; do
       proj_root=${proj_root%/*}
@@ -95,7 +89,7 @@ search_up () {
     echo "$proj_root/$1"
 }
 
-virtualenv_check () {
+function virtualenv_check () {
     VENV_DIR=$(search_up .venv);
     # .venv file is in the dir or a parent dir
     if [ ! -z $VENV_DIR ]; then
@@ -122,7 +116,7 @@ virtualenv_check () {
     fi
 }
 
-cd_hooks () {
+function cd_hooks () {
     virtualenv_check
 }
 
