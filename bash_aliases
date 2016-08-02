@@ -1,34 +1,38 @@
 # quick ones
-alias ls="ls -G"
-alias ll="ls -l"
-alias l.="ls -ltrah"
-alias c="clear"
-alias h="history"
-alias t="touch"
-alias epoch="date +%s"
-alias now="date -r"
-
-alias bye='kill -9 $$'
+alias ls="ls -G";
+alias ll="ls -l";
+alias l.="ls -ltrah";
+alias c="clear";
+alias h="history";
+alias t="touch";
 
 # scripts
-alias walls="python ~/dev/scripts/rename_walls.py"
+alias walls="python ~/dev/scripts/rename_walls.py";
 
 
 # other
-alias json="python -m json.tool"
-alias serve="python -m SimpleHTTPServer"
+alias json="python -m json.tool";
+alias serve="python -m SimpleHTTPServer";
 
-alias hidehidden='defaults write com.apple.finder AppleShowAllFiles False; killall Finder'
-alias showhidden='defaults write com.apple.finder AppleShowAllFiles True; killall Finder'
+alias hidehidden='defaults write com.apple.finder AppleShowAllFiles False; killall Finder';
+alias showhidden='defaults write com.apple.finder AppleShowAllFiles True; killall Finder';
 
 
 # functions
 
+function now () {
+    if [ $# -eq 0 ]; then
+        date +%s;
+    else
+        date -r $1;
+    fi
+}
+
 function s () {
     if [ $# -eq 0 ]; then
-        subl .
+        subl .;
     else
-        subl $1
+        subl $1;
     fi
 }
 
@@ -58,17 +62,17 @@ function cdf () {
 }
 
 function lh () {
-    open http://localhost:"$1"
+    open http://localhost:"$1";
 }
 
 # alias related
-alias eal="subl ~/.bash_aliases"
-alias sal=". ~/.bashrc; echo 'Sourced ~/.bashrc'"
+alias eal="subl ~/.bash_aliases";
+alias sal=". ~/.bashrc; echo 'Sourced ~/.bashrc'";
 
 # system
-alias cal='cal | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"'
-alias bat='pmset -g batt | { read; read n status; echo "$status"; }'
-alias epoch='date +%s'
+alias cal='cal | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"';
+alias bat='pmset -g batt | { read; read n status; echo "$status"; }';
+alias epoch='date +%s';
 
 # use ipython if available
 function p() {
@@ -86,7 +90,7 @@ function search_up () {
       proj_root=${proj_root%/*}
       if [ -z "$proj_root" ]; then echo ""; return; fi
     done
-    echo "$proj_root/$1"
+    echo "$proj_root/$1";
 }
 
 function virtualenv_check () {
@@ -117,23 +121,23 @@ function virtualenv_check () {
 }
 
 function cd_hooks () {
-    virtualenv_check
+    virtualenv_check;
 }
 
 cd () {
-    builtin cd "$@" && cd_hooks
+    builtin cd "$@" && cd_hooks;
 }
 
 
 # typos
-alias pyhton=python
-alias pythno=python
-alias pythin=python
-alias sl=ls
+alias pyhton=python;
+alias pythno=python;
+alias pythin=python;
+alias sl=ls;
 
 # git
-alias gs='git status'
-alias gc='git commit'
+alias gs='git status';
+alias gc='git commit';
 function gp() {
     git push -u $1 $2
 }
