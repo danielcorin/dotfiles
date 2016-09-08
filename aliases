@@ -17,6 +17,7 @@ alias serve="python -m SimpleHTTPServer";
 alias hidehidden='defaults write com.apple.finder AppleShowAllFiles False; killall Finder';
 alias showhidden='defaults write com.apple.finder AppleShowAllFiles True; killall Finder';
 
+alias bt="blueutil";
 
 # functions
 
@@ -65,8 +66,20 @@ function lh () {
     open http://localhost:"$1";
 }
 
+# colored man pages
+man() {
+    env \
+        LESS_TERMCAP_md=$'\e[1;31m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[1;44;33m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[1;32m' \
+            man "$@"
+}
+
 # alias related
-alias eal="subl ~/.bash_aliases";
+alias eal="subl ~/.dotfiles/aliases";
 alias sal=". ~/.bashrc; echo 'Sourced ~/.bashrc'";
 
 # system
@@ -84,50 +97,6 @@ function p() {
     fi
 }
 
-function search_up () {
-    proj_root=$(pwd -P 2>/dev/null || command pwd)
-    while [ ! -e "$proj_root/$1" ]; do
-      proj_root=${proj_root%/*}
-      if [ -z "$proj_root" ]; then echo ""; return; fi
-    done
-    echo "$proj_root/$1";
-}
-
-function virtualenv_check () {
-    VENV_DIR=$(search_up .venv);
-    # .venv file is in the dir or a parent dir
-    if [ ! -z $VENV_DIR ]; then
-        # if an env is already active, check if we need to call `workon` at all
-        if [ ! -z "$VIRTUAL_ENV" ]; then
-            CUR_VENV=$(basename $VIRTUAL_ENV);
-            VENV=$(cat $VENV_DIR);
-            # if the active env if different from the .venv file, switch to the latter
-            if [ "$VENV" != "$CUR_VENV" ]; then
-                workon $VENV;
-            fi
-        # no env active
-        else
-            workon `cat $VENV_DIR`;
-        fi
-    else
-        # code from virtualenvwrapper to deactivate an env
-        type deactivate >/dev/null 2>&1
-        if [ $? -eq 0 ]
-        then
-            deactivate
-            unset -f deactivate >/dev/null 2>&1
-        fi
-    fi
-}
-
-function cd_hooks () {
-    virtualenv_check;
-}
-
-cd () {
-    builtin cd "$@" && cd_hooks;
-}
-
 
 # typos
 alias pyhton=python;
@@ -136,8 +105,11 @@ alias pythin=python;
 alias sl=ls;
 
 # git
+alias gp='git pull origin master';
 alias gs='git status';
 alias gc='git commit';
 function gp() {
-    git push -u $1 $2
+    git push -u $1 $2;
 }
+alias gb='git branch';
+

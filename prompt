@@ -6,28 +6,6 @@ __git_ps1 ()
     fi
 }
 
-
-# DESCRIPTION:
-#
-#   Set the bash prompt according to:
-#    * the active virtualenv
-#    * the branch/status of the current git repository
-#    * the return value of the previous command
-#    * the fact you just came from Windows and are used to having newlines in
-#      your prompts.
-#
-# USAGE:
-#
-#   1. Save this file as ~/.bash_prompt
-#   2. Add the following line to the end of your ~/.bashrc or ~/.bash_profile:
-#        . ~/.bash_prompt
-#
-# LINEAGE:
-#
-#   Based on work by woods
-#
-#   https://gist.github.com/31967
- 
 # The various escape codes that we can use to color our prompt.
         RED="\[\033[0;31m\]"
      YELLOW="\[\033[1;33m\]"
@@ -64,16 +42,20 @@ function set_git_branch {
   branch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
  
   # Set the final branch string.
-  BRANCH="${state}[${branch}]${remote}${COLOR_NONE}"
+  BRANCH="${state}[${branch}]${COLOR_NONE}"
 }
  
 # Return the prompt symbol to use, colorized based on the return value of the
 # previous command.
 function set_prompt_symbol () {
+  CORRECTED_COMMAND="";
   if test $1 -eq 0 ; then
-      PROMPT_SYMBOL="❯"
+    PROMPT_SYMBOL="${PROMPT_CHAR}"
   else
-      PROMPT_SYMBOL="${LIGHT_RED}❯${COLOR_NONE}"
+    # LAST_COMMAND=$(history | tr -s ' ' | cut -d' ' -f3- | tail -n1)
+    # CORRECTED_COMMAND=`thefuck -d $LAST_COMMAND`
+    # alias f="$CORRECTED_COMMAND; alias f='';"
+    PROMPT_SYMBOL="${LIGHT_RED}${PROMPT_CHAR}${COLOR_NONE}"
   fi
 }
  
@@ -86,24 +68,33 @@ function set_virtualenv () {
   fi
 }
 
-function set_box () {
+function set_prompt_char () {
   if [[ `uname` = "Darwin" ]]; then
-    BOX="${LIGHT_GREEN}${COLOR_NONE}"
+    PROMPT_CHAR="❯"
   else
-    BOX="${LIGHT_RED}ᗑ${COLOR_NONE}"
+    PROMPT_CHAR="→"
+  fi
+}
+
+function set_cert_time () {
+  CERT_TIME=""
+  if type ussh > /dev/null 2>&1 ; then
+    CERT_TIME=`ussh  | awk '{ print $6 }'`
+    CERT_TIME="${LIGHT_GREEN}${CERT_TIME}${COLOR_NONE}"
   fi
 }
 
 # Set the full bash prompt.
 function set_bash_prompt () {
+  LAST_COMMAND=$?
+  set_prompt_char
   # Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
   # return value of the last command.
-  set_prompt_symbol $?
+  set_prompt_symbol $LAST_COMMAND
  
   # Set the PYTHON_VIRTUALENV variable.
   set_virtualenv
 
-  set_box
  
   # Set the BRANCH variable.
   if is_git_repository ; then
@@ -114,7 +105,7 @@ function set_bash_prompt () {
  
   # Set the bash prompt variable.
   PS1="
-${BOX} ${PYTHON_VIRTUALENV}${BLUE}\w${COLOR_NONE} ${BRANCH}
+${PYTHON_VIRTUALENV}${BLUE}\w${COLOR_NONE} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
  
