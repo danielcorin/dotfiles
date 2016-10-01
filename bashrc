@@ -1,6 +1,8 @@
 PATH="~/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
 
+MANPATH="~/bin/man:$MANPATH"
+
 # Unlimited history
 export HISTFILESIZE=
 export HISTSIZE=
@@ -8,7 +10,7 @@ export HISTCONTROL=ignoredups
 
 # GOPATH
 export GOPATH="$HOME/gocode"
-export PATH="$PATH:$GOPATH/bin"
+PATH="$PATH:$GOPATH/bin"
 
 if [ -f ~/.prompt ]; then
     . ~/.prompt
@@ -39,3 +41,6 @@ fi
 if [ -f ~/.z.sh ]; then
 	. ~/.z.sh
 fi
+
+export PATH
+export MANPATH

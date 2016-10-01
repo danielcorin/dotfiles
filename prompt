@@ -52,9 +52,6 @@ function set_prompt_symbol () {
   if test $1 -eq 0 ; then
     PROMPT_SYMBOL="${PROMPT_CHAR}"
   else
-    # LAST_COMMAND=$(history | tr -s ' ' | cut -d' ' -f3- | tail -n1)
-    # CORRECTED_COMMAND=`thefuck -d $LAST_COMMAND`
-    # alias f="$CORRECTED_COMMAND; alias f='';"
     PROMPT_SYMBOL="${LIGHT_RED}${PROMPT_CHAR}${COLOR_NONE}"
   fi
 }
@@ -73,14 +70,6 @@ function set_prompt_char () {
     PROMPT_CHAR="❯"
   else
     PROMPT_CHAR="→"
-  fi
-}
-
-function set_cert_time () {
-  CERT_TIME=""
-  if type ussh > /dev/null 2>&1 ; then
-    CERT_TIME=`ussh  | awk '{ print $6 }'`
-    CERT_TIME="${LIGHT_GREEN}${CERT_TIME}${COLOR_NONE}"
   fi
 }
 
@@ -105,7 +94,7 @@ function set_bash_prompt () {
  
   # Set the bash prompt variable.
   PS1="
-${PYTHON_VIRTUALENV}${BLUE}\w${COLOR_NONE} ${BRANCH}
+${YELLOW}\A${COLOR_NONE} ${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
  
