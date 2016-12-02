@@ -1,5 +1,5 @@
-__git_ps1 () 
-{ 
+__git_ps1 ()
+{
     local b="$(git symbolic-ref HEAD 2>/dev/null)";
     if [ -n "$b" ]; then
         printf " (%s)" "${b##refs/heads/}";
@@ -17,17 +17,17 @@ LIGHT_GREEN="\[\033[1;32m\]"
       WHITE="\[\033[1;37m\]"
  LIGHT_GRAY="\[\033[0;37m\]"
  COLOR_NONE="\[\e[0m\]"
- 
+
 # Detect whether the current directory is a git repository.
 function is_git_repository {
   git branch > /dev/null 2>&1
 }
- 
+
 # Determine the branch/state information for this git repository.
 function set_git_branch {
   # Capture the output of the "git status" command.
   git_status="$(git status 2> /dev/null)"
- 
+
   # Set color based on clean/staged/dirty.
   if [[ ${git_status} =~ "clean" ]]; then
     state="${GREEN}"
@@ -37,14 +37,14 @@ function set_git_branch {
     state="${LIGHT_RED}"
   fi
 
- 
+
   # Get the name of the branch.
   branch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
- 
+
   # Set the final branch string.
   BRANCH="${state}[${branch}]${COLOR_NONE}"
 }
- 
+
 # Return the prompt symbol to use, colorized based on the return value of the
 # previous command.
 function set_prompt_symbol () {
@@ -55,7 +55,7 @@ function set_prompt_symbol () {
     PROMPT_SYMBOL="${LIGHT_RED}${PROMPT_CHAR}${COLOR_NONE}"
   fi
 }
- 
+
 # Determine active Python virtualenv details.
 function set_virtualenv () {
   if test -z "$VIRTUAL_ENV" ; then
@@ -65,38 +65,40 @@ function set_virtualenv () {
   fi
 }
 
-function set_prompt_char () {
+function set_env_vars () {
   if [[ `uname` = "Darwin" ]]; then
     PROMPT_CHAR="❯"
+    TIME_COLOR="${YELLOW}"
   else
     PROMPT_CHAR="→"
+    TIME_COLOR="${RED}"
   fi
 }
 
 # Set the full bash prompt.
 function set_bash_prompt () {
   LAST_COMMAND=$?
-  set_prompt_char
+  set_env_vars
   # Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
   # return value of the last command.
   set_prompt_symbol $LAST_COMMAND
- 
+
   # Set the PYTHON_VIRTUALENV variable.
   set_virtualenv
 
- 
+
   # Set the BRANCH variable.
   if is_git_repository ; then
     set_git_branch
   else
     BRANCH=''
   fi
- 
+
   # Set the bash prompt variable.
   PS1="
-${YELLOW}\A${COLOR_NONE} ${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
+${TIME_COLOR}\A${COLOR_NONE} ${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
- 
+
 # Tell bash to execute this function just before displaying its prompt.
 PROMPT_COMMAND=set_bash_prompt

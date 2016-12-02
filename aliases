@@ -112,9 +112,9 @@ alias gc='git commit';
 alias gb='git branch';
 alias ga='git add';
 alias gd='git diff';
+alias gl='git log';
+alias gb='git branch';
 
 function gp() {
     git push -u $1 $2;
 }
-alias gb='git branch';
-
