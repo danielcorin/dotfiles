@@ -66,12 +66,14 @@ function set_virtualenv () {
 }
 
 function set_env_vars () {
+  # on macOS
   if [[ `uname` = "Darwin" ]]; then
     PROMPT_CHAR="❯"
     TIME_COLOR="${YELLOW}"
   else
     PROMPT_CHAR="→"
     TIME_COLOR="${RED}"
+    BOX="${RED}`hostname`${COLOR_NONE} "
   fi
 }
 
@@ -96,7 +98,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${TIME_COLOR}\A${COLOR_NONE} ${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
+${BOX}${TIME_COLOR}\A${COLOR_NONE} ${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
 
