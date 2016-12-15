@@ -98,7 +98,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${BOX}${TIME_COLOR}\A${COLOR_NONE} ${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
+${TIME_COLOR}\A${COLOR_NONE} ${BOX}${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
 
