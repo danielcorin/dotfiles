@@ -6,7 +6,7 @@ MANPATH="~/bin/man:$MANPATH"
 # Unlimited history
 export HISTFILESIZE=
 export HISTSIZE=
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth:erasedups
 
 # GOPATH
 export GOPATH="$HOME/gocode"
