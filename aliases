@@ -9,6 +9,8 @@ alias o="open .";
 
 # dev
 alias a=". env/bin/activate"
+# clean up unison garbage
+alias cl="find -name '*unison.tmp' | xargs rm -i"
 
 # scripts
 alias walls="python ~/dev/scripts/rename_walls.py";
@@ -118,10 +120,19 @@ alias ga='git add';
 alias gd='git diff';
 alias gl='git log';
 alias gb='git branch';
-
-function gp() {
-    git push -u $1 $2;
+alias gco='git checkout';
+alias gcm='gco master';
+alias grbm='git rebase master';
+alias glg='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
+function grr () {
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    gcm
+    gpo
+    git reset --hard origin/master
+    gco $branch
 }
+
+alias tmux="export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock; tmux"
 
 function doit() {
     COUNT=$1
