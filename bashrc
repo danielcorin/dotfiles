@@ -44,3 +44,7 @@ fi
 
 export PATH
 export MANPATH
+
+# import .bash_history, silently fail
+# wget https://raw.githubusercontent.com/jcsalterego/historian/master/hist -O ~/bin/hist
+hist import >/dev/null 2>&1

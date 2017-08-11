@@ -1545,6 +1545,8 @@
 	<integer>49</integer>
 	<key>HotkeyModifiers</key>
 	<integer>262401</integer>
+	<key>IgnoreHardNewlinesInURLs</key>
+	<true/>
 	<key>LeftOption</key>
 	<integer>2</integer>
 	<key>LoadPrefsFromCustomFolder</key>
@@ -1590,21 +1592,21 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>520 561 400 129 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>-3588 364 620 392 -4000 -1244 1440 2537 </string>
+	<string>410 363 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>432 268 796 473 0 0 1440 877 </string>
+	<string>229 196 796 473 0 0 1440 877 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>4 10 1676 1017 0 0 1680 1027 </string>
+	<string>0 21 1440 856 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 425 570 452 0 0 1440 877 </string>
+	<string>116 223 1176 654 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 425 570 452 0 0 1440 877 </string>
+	<string>3 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>0 425 570 452 0 0 1440 877 </string>
+	<string>4 575 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
 	<string>302 365 570 452 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
@@ -4310,7 +4312,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-24T00:00:09Z</date>
+	<date>2017-04-21T23:27:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowPaneTitles</key>
@@ -7228,7 +7230,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.14</string>
+	<string>3.0.15</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
