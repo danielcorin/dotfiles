@@ -138,3 +138,10 @@ function doit() {
     COUNT=$1
     for i in $(seq 1 $COUNT); do ${@:2}; done
 }
+
+alias dt='cd ~/Desktop';
+
+pyclean () {
+        find . -type f -name "*.py[co]" -delete
+        find . -type d -name "__pycache__" -delete
+}
