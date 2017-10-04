@@ -77,6 +77,15 @@ function set_env_vars () {
   fi
 }
 
+function set_boxer_sync_status () {
+	RUNNING=$(ps aux | grep 'boxer sync' | wc -l)
+	if [[ ( "$(($RUNNING))" > 1 ) ]] ; then
+		BOXER_PROMPT="${GREEN}▲${COLOR_NONE} "
+	else
+		BOXER_PROMPT=""
+	fi
+}
+
 # Set the full bash prompt.
 function set_bash_prompt () {
   LAST_COMMAND=$?
@@ -88,6 +97,8 @@ function set_bash_prompt () {
   # Set the PYTHON_VIRTUALENV variable.
   set_virtualenv
 
+  set_boxer_sync_status
+
 
   # Set the BRANCH variable.
   if is_git_repository ; then
@@ -98,7 +109,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${TIME_COLOR}\A${COLOR_NONE} ${BOX}${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
+${BOXER_PROMPT}${TIME_COLOR}\A${COLOR_NONE} ${BOX}${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
 
