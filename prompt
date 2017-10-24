@@ -86,9 +86,34 @@ function set_boxer_sync_status () {
 	fi
 }
 
+function set_node_version {
+	NODE_VERSION=''
+	if [ -f package.json ]; then
+		NODE_VERSION="${BLUE}[`nvm version`]${COLOR_NONE} "
+	fi
+}
+
+function set_tmux_session_name {
+	TMUX_SESSION=''
+	if { [ "$TERM" = "screen" ] && [ ! -z "$TMUX" ]; } then
+	  TMUX_SESSION="|`tmux display-message -p "#S" | tr -d '\n'`| "
+	fi
+}
+
+function set_time {
+	TIME="${TIME_COLOR}\A${COLOR_NONE}"
+}
+
+function set_prompt_path {
+	PROMPT_PATH="${BLUE}\W${COLOR_NONE}"
+}
+
+
 # Set the full bash prompt.
 function set_bash_prompt () {
   LAST_COMMAND=$?
+  set_time
+  set_prompt_path
   set_env_vars
   # Set the PROMPT_SYMBOL variable. We do this first so we don't lose the
   # return value of the last command.
@@ -99,6 +124,7 @@ function set_bash_prompt () {
 
   set_boxer_sync_status
 
+  set_tmux_session_name
 
   # Set the BRANCH variable.
   if is_git_repository ; then
@@ -109,7 +135,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${BOXER_PROMPT}${TIME_COLOR}\A${COLOR_NONE} ${BOX}${PYTHON_VIRTUALENV}${BLUE}\W${COLOR_NONE} ${BRANCH}
+${BOXER_PROMPT}${TIME} ${BOX}${TMUX_SESSION}${PYTHON_VIRTUALENV}${PROMPT_PATH} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
 

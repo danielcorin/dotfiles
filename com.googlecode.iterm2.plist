@@ -14,6 +14,8 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Brogrammer</key>
@@ -1604,13 +1606,13 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 364 620 392 0 0 1440 878 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>346 188 606 456 0 0 1680 1028 </string>
+	<string>269 138 606 469 0 0 1440 878 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>229 170 796 473 0 0 1440 878 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 8 1435 870 0 0 1440 878 </string>
+	<string>0 0 1440 878 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 13 1435 865 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -4189,7 +4191,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>15665685-3C02-437C-B507-17E3A5D407E0</string>
 	<key>NoSyncLastTipTime</key>
-	<real>528135245.26816201</real>
+	<real>528221702.77694702</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -4276,6 +4278,7 @@
 		<string>0068</string>
 		<string>0069</string>
 		<string>0070</string>
+		<string>0071</string>
 	</array>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
@@ -4318,6 +4321,10 @@
 	<string>/Users/dancorin/.dotfiles</string>
 	<key>Print In Black And White</key>
 	<true/>
+	<key>QuickPasteBytesPerCall</key>
+	<integer>1024</integer>
+	<key>QuickPasteDelayBetweenCalls</key>
+	<real>0.0099999997764825821</real>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -4327,7 +4334,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-26T21:10:23Z</date>
+	<date>2017-10-23T23:30:14Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowPaneTitles</key>
@@ -7247,7 +7254,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.1</string>
+	<string>3.1.3</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
