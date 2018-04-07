@@ -6,6 +6,7 @@ alias c="clear";
 alias h="history";
 alias t="touch";
 alias o="open .";
+alias just="sudo"
 
 # dev
 alias a=". env/bin/activate"
@@ -91,7 +92,6 @@ alias sal=". ~/.bashrc; echo 'Sourced ~/.bashrc'";
 # system
 alias cal='cal | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"';
 alias bat='pmset -g batt | { read; read n status; echo "$status"; }';
-alias epoch='date +%s';
 
 # use ipython if available
 function p() {
@@ -123,8 +123,8 @@ alias gb='git branch';
 alias gco='git checkout';
 alias gcm='gco master';
 alias grbm='git rebase master';
-alias glg='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
-function grr () {
+alias glg='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'\'' --abbrev-commit'
+function ugh () {
     branch=$(git rev-parse --abbrev-ref HEAD)
     gcm
     gpo
@@ -140,10 +140,17 @@ function doit() {
 }
 
 alias dt='cd ~/Desktop';
+alias dfiles='s ~/.dotfiles';
 
 pyclean () {
         find . -type f -name "*.py[co]" -delete
         find . -type d -name "__pycache__" -delete
 }
 
-alias attach="tmux -CC a -t"
+alias tatt="tmux -CC a -t"
+alias tnew="tmux -CC new-session -s"
+alias tls="tmux ls"
+
+alias sp2un='for i in *; do mv -iv "$i" "${i// /_}"; done'
+
+alias xfmt="xmllint --format -"

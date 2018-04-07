@@ -6,5 +6,7 @@ brew install lua
 brew install ssh-copy-id
 brew install tree
 brew install coreutils
+brew install thefuck
+brew install fd
 
 brew cleanup

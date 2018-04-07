@@ -86,6 +86,15 @@ function set_boxer_sync_status () {
 	fi
 }
 
+function set_cerberus_running_status () {
+	RUNNING=$(ps aux | grep 'cerberus' | wc -l)
+	if [[ ( "$(($RUNNING))" > 1 ) ]] ; then
+		CERBERUS_PROMPT="${GREEN}⇄${COLOR_NONE} "
+	else
+		CERBERUS_PROMPT=""
+	fi
+}
+
 function set_node_version {
 	NODE_VERSION=''
 	if [ -f package.json ]; then
@@ -96,7 +105,7 @@ function set_node_version {
 function set_tmux_session_name {
 	TMUX_SESSION=''
 	if { [ "$TERM" = "screen" ] && [ ! -z "$TMUX" ]; } then
-	  TMUX_SESSION="|`tmux display-message -p "#S" | tr -d '\n'`| "
+	  TMUX_SESSION="${LIGHT_GREEN}`tmux display-message -p "#S" | tr -d '\n'` ${COLOR_NONE}"
 	fi
 }
 
@@ -123,6 +132,7 @@ function set_bash_prompt () {
   set_virtualenv
 
   set_boxer_sync_status
+  set_cerberus_running_status
 
   set_tmux_session_name
 
@@ -135,7 +145,7 @@ function set_bash_prompt () {
 
   # Set the bash prompt variable.
   PS1="
-${BOXER_PROMPT}${TIME} ${BOX}${TMUX_SESSION}${PYTHON_VIRTUALENV}${PROMPT_PATH} ${BRANCH}
+${BOXER_PROMPT}${CERBERUS_PROMPT}${TIME} ${BOX}${TMUX_SESSION}${PYTHON_VIRTUALENV}${PROMPT_PATH} ${BRANCH}
 ${PROMPT_SYMBOL} "
 }
 
