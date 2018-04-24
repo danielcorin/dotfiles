@@ -154,3 +154,7 @@ alias tls="tmux ls"
 alias sp2un='for i in *; do mv -iv "$i" "${i// /_}"; done'
 
 alias xfmt="xmllint --format -"
+
+function sha256() {
+	echo -n $1 | shasum -a 256 | awk '{print $1}'
+}
