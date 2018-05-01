@@ -46,13 +46,7 @@ module.exports = {
     borderColor: '#555',
 
     // custom CSS to embed in the main window
-    css: `
-      .terminal:not(.focus) {
-        opacity: 0.6;
-      }
-      .terminal.focus {
-        opacity: 1;
-      }`,
+    css: '',
 
     // custom CSS to embed in the terminal window
     termCSS: '',
@@ -147,6 +141,7 @@ module.exports = {
         fontSize: '0px',
       },
       maximize: 'cmd+enter',
+      inactivePaneOpacity: 0.6,
     },
 
   },
