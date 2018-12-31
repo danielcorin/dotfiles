@@ -91,18 +91,7 @@ alias sal=". ~/.bashrc; echo 'Sourced ~/.bashrc'";
 
 # system
 alias cal='cal | grep --before-context 6 --after-context 6 --color -e " $(date +%e)" -e "^$(date +%e)"';
-alias bat='pmset -g batt | { read; read n status; echo "$status"; }';
-
-# use ipython if available
-function p() {
-    ipython --version > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
-        python
-    else
-        ipython
-    fi
-}
-
+alias batt='pmset -g batt | { read; read n status; echo "$status"; }';
 
 # typos
 alias pyhton=python;
@@ -116,10 +105,14 @@ alias gpo='git pull origin master';
 alias gs='git status';
 alias gc='git commit';
 alias gb='git branch';
-alias ga='git add';
+alias ga='git add -A';
 alias gd='git diff';
 alias gl='git log';
 alias gb='git branch';
+
+function b64d {
+	echo $1 | base64 --decode | jq .
+}
 alias gco='git checkout';
 alias gcm='gco master';
 alias grbm='git rebase master';
@@ -131,6 +124,15 @@ function ugh () {
     git reset --hard origin/master
     gco $branch
 }
+
+# git interactive checkout
+alias gic="git status --porcelain | yank | xargs git checkout"
+alias gsa="git stash apply"
+# git interactive checkout branch
+gg () {
+	git branch | yank | xargs git checkout
+}
+
 
 alias tmux="export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock; tmux"
 
@@ -158,3 +160,23 @@ alias xfmt="xmllint --format -"
 function sha256() {
 	echo -n $1 | shasum -a 256 | awk '{print $1}'
 }
+
+function bv() {
+	eval "echo \$$1"
+}
+
+function ugh() {
+	git checkout master
+	git fetch origin
+	git pull origin master
+	git reset --hard origin/master
+	git checkout -
+	git rebase master
+}
+
+alias mr="make run"
+
+alias hgr="history | grep "
+
+alias cat="bat"
+alias preview="fzf --preview 'bat --color \"always\" {}'"

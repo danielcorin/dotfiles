@@ -1,7 +1,10 @@
+# macOS stuff
+.DS_Store
+
+# dotfiles to ignore
+local
 locals
 user_scripts
 gitconfig
 mysql_config
 virtualenv_config
-.DS_Store
-

@@ -1,9 +1,11 @@
 PATH="~/bin:$PATH"
 PATH="/usr/local/sbin:$PATH"
+PATH=/usr/local/share/python:$PATH
 
 MANPATH="~/bin/man:$MANPATH"
 
 # Unlimited history
+export SHELL_SESSION_HISTORY=0
 export HISTFILESIZE=
 export HISTSIZE=
 export HISTCONTROL=ignoreboth:erasedups
@@ -25,6 +27,11 @@ if [ -f ~/.locals ]; then
     . ~/.locals
 fi
 
+# not version controlled
+if [ -f ~/.local ]; then
+    . ~/.local
+fi
+
 if [ -f ~/.git_completion ]; then
 	. ~/.git_completion
 fi
@@ -38,8 +45,15 @@ if [ -f ~/.mysql_config ]; then
 	. ~/.mysql_config
 fi
 
-if [ -f ~/.z.sh ]; then
-	. ~/.z.sh
+
+if [ -f ~/.inputrc ]; then
+	. ~/.inputrc
+fi
+
+if [ -d ~/.bash_completion.d ]; then
+  for file in ~/.bash_completion.d/*; do
+    . $file
+  done
 fi
 
 export PATH
@@ -49,4 +63,8 @@ export MANPATH
 # wget https://raw.githubusercontent.com/jcsalterego/historian/master/hist -O ~/bin/hist
 hist import >/dev/null 2>&1
 
-eval $(thefuck --alias tf)
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
+

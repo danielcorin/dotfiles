@@ -71,7 +71,7 @@ function set_env_vars () {
     PROMPT_CHAR="❯"
     TIME_COLOR="${YELLOW}"
   else
-    PROMPT_CHAR="→"
+    PROMPT_CHAR="✧"
     TIME_COLOR="${RED}"
     BOX="${RED}`hostname`${COLOR_NONE} "
   fi

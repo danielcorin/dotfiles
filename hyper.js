@@ -141,9 +141,26 @@ module.exports = {
         fontSize: '0px',
       },
       maximize: 'cmd+enter',
-      inactivePaneOpacity: 0.6,
+      inactivePaneOpacity: 0.55,
     },
-
+    hyperline: {
+      plugins: [
+          "hostname",
+          "ip",
+          "cpu",
+          "memory",
+          "network",
+          "battery",
+          "spotify",
+      ]
+    },
+    summon: {
+      hideDock: false,
+      hotkey: 'Cmd+Alt+Ctrl+Shift+Space',
+    },
+    hyperStatusLine: {
+      footerTransparent: false,
+    },
   },
 
   // a list of plugins to fetch and install from npm
@@ -154,6 +171,10 @@ module.exports = {
   //   `project#1.0.1`
   plugins: [
     "hyper-pane",
+    "hyperline",
+    // "hyperpower",
+    "hyperterm-summon",
+    "hyper-statusline",
   ],
 
   // in development, you can create a directory under
