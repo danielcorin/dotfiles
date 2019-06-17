@@ -1,12 +1,12 @@
 # quick ones
-alias ls="ls -G";
-alias ll="ls -l";
-alias l.="ls -ltrah";
+alias ls="ls -G"
+alias l="exa"
+alias ll="l -l";
+alias l.="l -lrah";
 alias c="clear";
 alias h="history";
 alias t="touch";
 alias o="open .";
-alias just="sudo"
 
 # dev
 alias a=". env/bin/activate"
@@ -179,4 +179,4 @@ alias mr="make run"
 alias hgr="history | grep "
 
 alias cat="bat"
-alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias preview="fzf --preview 'bat --color \"always\" {}' | xargs open"

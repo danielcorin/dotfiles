@@ -9,6 +9,9 @@ export SHELL_SESSION_HISTORY=0
 export HISTFILESIZE=
 export HISTSIZE=
 export HISTCONTROL=ignoreboth:erasedups
+export HISTIGNORE='ls:history'
+history -a
+
 
 # GOPATH
 export GOPATH="$HOME/gocode"

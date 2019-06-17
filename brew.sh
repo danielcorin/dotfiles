@@ -1,17 +1,17 @@
 brew update
 brew upgrade
 
-brew install coreutils
 brew install ack
-brew install lua
-brew install ssh-copy-id
-brew install tree
+brew install bat
 brew install coreutils
-brew install thefuck
+brew install exa
 brew install fd
 brew install fzf
-brew install bat
-brew install yank
+brew install lua
 brew install ossp-uuid
+brew install ssh-copy-id
+brew install tree
+brew install yank
+brew install ccze
 
 brew cleanup
