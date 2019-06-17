@@ -48,9 +48,12 @@ if [ -f ~/.mysql_config ]; then
 	. ~/.mysql_config
 fi
 
-
 if [ -f ~/.inputrc ]; then
 	. ~/.inputrc
+fi
+
+if [ -f ~/.macos ]; then
+	. ~/.macos
 fi
 
 if [ -d ~/.bash_completion.d ]; then
