@@ -13,5 +13,7 @@ brew install ssh-copy-id
 brew install tree
 brew install yank
 brew install ccze
+brew install telnet
+brew install md5sha1sum
 
 brew cleanup

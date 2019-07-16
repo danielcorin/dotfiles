@@ -8,7 +8,7 @@ osascript -e 'tell application "System Preferences" to quit'
 defaults write com.apple.universalaccess reduceTransparency -bool true
 
 # Always show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 # Disable smart quotes as they’re annoying when typing code

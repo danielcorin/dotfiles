@@ -180,3 +180,11 @@ alias hgr="history | grep "
 
 alias cat="bat"
 alias preview="fzf --preview 'bat --color \"always\" {}' | xargs open"
+# list names of running docker containers
+alias dna="docker ps --format '{{.Names}}'"
+# list hashses of running docker containers
+alias dha="docker ps -q"
+# stop all docker containers
+alias dsa="docker ps -a -q | xargs -n1 docker stop"
+# watch running docker containers
+alias dwa='watch "docker ps --format \"{{.Names}} {{.ID}}\""'
