@@ -109,6 +109,7 @@ alias ga='git add -A';
 alias gd='git diff';
 alias gl='git log';
 alias gb='git branch';
+alias ggm='git checkout master';
 
 function b64d {
 	echo $1 | base64 --decode | jq .
