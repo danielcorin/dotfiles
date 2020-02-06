@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 syntax on
 
 " Tabs and stuff
@@ -44,12 +42,4 @@ nnoremap <C-h> <C-w><C-h>
 
 " Turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-
-map <C-e> :NERDTreeToggle<CR>
-
-" Open NERDTree file explorer
-autocmd vimenter * NERDTree
-
-" Close NERDTree if it's the last buffer open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 

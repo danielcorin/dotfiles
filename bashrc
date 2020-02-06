@@ -12,6 +12,7 @@ export HISTCONTROL=ignoreboth:erasedups
 export HISTIGNORE='ls:history'
 history -a
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # GOPATH
 export GOPATH="$HOME/gocode"
@@ -69,7 +70,8 @@ export MANPATH
 # wget https://raw.githubusercontent.com/jcsalterego/historian/master/hist -O ~/bin/hist
 hist import >/dev/null 2>&1
 
-
+# to install
+# /usr/local/opt/fzf/install
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make

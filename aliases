@@ -38,9 +38,9 @@ function now () {
 
 function s () {
     if [ $# -eq 0 ]; then
-        subl .;
+        code .;
     else
-        subl $1;
+        code $1;
     fi
 }
 
@@ -86,7 +86,7 @@ man() {
 }
 
 # alias related
-alias eal="subl ~/.dotfiles/aliases";
+alias eal="code ~/.dotfiles/aliases";
 alias sal=". ~/.bashrc; echo 'Sourced ~/.bashrc'";
 
 # system
@@ -186,6 +186,6 @@ alias dna="docker ps --format '{{.Names}}'"
 # list hashses of running docker containers
 alias dha="docker ps -q"
 # stop all docker containers
-alias dsa="docker ps -a -q | xargs -n1 docker stop"
+alias dsa="docker ps -a -q | xargs docker stop"
 # watch running docker containers
 alias dwa='watch "docker ps --format \"{{.Names}} {{.ID}}\""'
