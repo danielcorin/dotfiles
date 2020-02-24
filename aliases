@@ -130,7 +130,7 @@ function ugh () {
 alias gic="git status --porcelain | yank | xargs git checkout"
 alias gsa="git stash apply"
 # git interactive checkout branch
-gg () {
+function gg () {
 	git branch | yank | xargs git checkout
 }
 
