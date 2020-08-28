@@ -53,6 +53,8 @@ function cdl () {
     cd $1; ls;
 }
 
+alias wf="sudo networksetup -setnetworkserviceenabled Wi-Fi off && sleep 1 && sudo networksetup -setnetworkserviceenabled Wi-Fi on"
+
 function cdf () {
     currFolderPath=$( /usr/bin/osascript <<"    EOT"
         tell application "Finder"
