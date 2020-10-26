@@ -6,6 +6,7 @@
 
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 eval "$(rbenv init -)"
 

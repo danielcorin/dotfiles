@@ -67,6 +67,8 @@ alias grbm='git rebase master';
 alias gsa="git stash apply"
 alias glg='git log --graph --pretty='\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'\'' --abbrev-commit'
 
+alias urldecode='python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))"'
+
 function ugh () {
     branch=$(git rev-parse --abbrev-ref HEAD)
     git checkout master
