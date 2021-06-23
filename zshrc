@@ -7,10 +7,15 @@
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
 
 eval "$(rbenv init -)"
 
 eval "$(fasd --init auto)"
+
+eval "$(navi widget zsh)"
+
+. /usr/local/opt/asdf/asdf.sh
 
 # load colors
 autoload -U colors && colors
@@ -73,5 +78,5 @@ git_info() {
 setopt PROMPT_SUBST
 NEWLINE=$'\n'
 PROMPT_CHAR='❯'
-PROMPT='${NEWLINE}%F{green}$(workdays)%f %F{yellow}%T%f %F{blue}%1d%f $(git_info) ${NEWLINE}${PROMPT_CHAR} '
+PROMPT='${NEWLINE}%F{red}$(nb notebooks current)%f %F{yellow}%T%f %F{blue}%1d%f $(git_info) ${NEWLINE}${PROMPT_CHAR} '
 
